@@ -2,12 +2,12 @@
 // Стан додатку (state)
 const state = {
     tasks: JSON.parse(localStorage.getItem('tasksData')) || [], 
-    editingId: null, // id запису
-    searchQuery: '', // рядок пошуку
-    filterPriority: 'all' // поточний фільтр
+    editingId: null, 
+    searchQuery: '', 
+    filterPriority: 'all' 
 };
 
-// Рендер
+
 render();
 
 
@@ -18,11 +18,11 @@ document.getElementById('taskForm').addEventListener('submit', function(e) {
 
     if (validate(formData)) {
         if (state.editingId !== null) {
-            updateItem(state.editingId, formData); // оновлюємо існуючий
+            updateItem(state.editingId, formData); 
             state.editingId = null;
             document.getElementById('submitBtn').innerText = "Зберегти запис";
         } else {
-            addItem(formData); // додаємо новий
+            addItem(formData); 
         }
         document.getElementById('taskForm').reset();
     }
