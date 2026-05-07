@@ -1,8 +1,6 @@
-
-// Стан додатку (state)
+// Стан додатку 
 const state = {
     tasks: JSON.parse(localStorage.getItem('tasksData')) || [], 
-    editingId: null, 
     searchQuery: '', 
     filterPriority: 'all' 
 };
@@ -34,13 +32,13 @@ document.getElementById('searchInput').addEventListener('input', function(e) {
     render();
 });
 
-// Фільтр за пріоритетом
+// Фільтр 
 document.getElementById('priorityFilter').addEventListener('change', function(e) {
     state.filterPriority = e.target.value;
     render();
 });
 
-// Делегування подій для кнопок в таблиці
+// Делегування 
 document.getElementById('tableBody').addEventListener('click', function(e) {
     if (e.target.tagName === 'BUTTON') {
         const action = e.target.getAttribute('data-action');
@@ -53,7 +51,7 @@ document.getElementById('tableBody').addEventListener('click', function(e) {
 
 
 
-// Зчитування даних з форми
+// Зчитування даних 
 function readForm() {
     return {
         title: document.getElementById('title').value.trim(),
@@ -105,7 +103,7 @@ function deleteItem(id) {
     render();
 }
 
-// Підготовка до редагування 
+// редагування 
 function editItem(id) {
     const task = state.tasks.find(t => t.id === id);
     if (!task) return;
@@ -134,8 +132,31 @@ function render() {
     const tbody = document.getElementById('tableBody');
     tbody.innerHTML = ''; 
 
-    // Фільтр масиву 
+    // Фільтруємо масив перед виводом
     const filteredTasks = state.tasks.filter(task => {
         const matchesSearch = task.title.toLowerCase().includes(state.searchQuery);
         
-        let matchesFilter = true
+        let matchesFilter = true;
+        if (state.filterPriority === 'high') matchesFilter = task.priority >= 8;
+        if (state.filterPriority === 'low') matchesFilter = task.priority <= 7;
+
+        return matchesSearch && matchesFilter;
+    });
+
+    // Малюємо рядки
+    filteredTasks.forEach(task => {
+        const tr = document.createElement('tr');
+        
+        tr.innerHTML = `
+            <td>${task.title}</td>
+            <td>${task.email}</td>
+            <td>${task.priority}</td>
+            <td>${task.date}</td>
+            <td>
+                <button data-action="edit" data-id="${task.id}" style="margin-right: 5px;">Редагувати</button>
+                <button data-action="delete" data-id="${task.id}">Видалити</button>
+            </td>
+        `;
+        tbody.appendChild(tr);
+    });
+}
