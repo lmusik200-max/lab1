@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { CourseService } from "../service/course.service";
+import { CourseService } from "../service/Course.service";
 
 export const CourseController = {
   getAll: (req: Request, res: Response, next: NextFunction) => {
@@ -23,7 +23,7 @@ export const CourseController = {
   create: (req: Request, res: Response, next: NextFunction) => {
     try {
       const newCourse = CourseService.create(req.body);
-      res.status(201).json(newCourse); 
+      res.status(201).json(newCourse);
     } catch (error) { next(error); }
   },
 
@@ -36,8 +36,8 @@ export const CourseController = {
 
   delete: (req: Request, res: Response, next: NextFunction) => {
     try {
-     CourseService.delete(req.params.id as string);
-      res.status(204).send(); 
+      CourseService.delete(req.params.id as string);
+      res.status(204).send();
     } catch (error) { next(error); }
   }
 };

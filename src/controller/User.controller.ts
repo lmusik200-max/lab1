@@ -19,7 +19,7 @@ export const UserController = {
   create: (req: Request, res: Response, next: NextFunction) => {
     try {
       const newUser = UserService.create(req.body);
-      res.status(201).json(newUser); // 201 Created [cite: 220-224]
+      res.status(201).json(newUser);
     } catch (error) { next(error); }
   },
 
@@ -33,7 +33,7 @@ export const UserController = {
   delete: (req: Request, res: Response, next: NextFunction) => {
     try {
       UserService.delete(req.params.id as string);
-      res.status(204).send(); // 204 No Content [cite: 225-229]
+      res.status(204).send();
     } catch (error) { next(error); }
   }
 };
