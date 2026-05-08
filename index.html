@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Варіант 10. Управління завданнями (Відмінно)</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Варіант 10. Управління завданнями</h1>
+    <div class="container">
+        <div class="form-section">
+            <form id="taskForm">
+                <div class="form-group">
+                    <label for="title">Назва завдання:</label>
+                    <input type="text" id="title">
+                    <span class="error-msg" id="error-title"></span>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email виконавця:</label>
+                    <input type="email" id="email">
+                    <span class="error-msg" id="error-email"></span>
+                </div>
+                <div class="form-group">
+                    <label for="priority">Пріоритет (1-10):</label>
+                    <input type="number" id="priority">
+                    <span class="error-msg" id="error-priority"></span>
+                </div>
+                <div class="form-group">
+                    <label for="date">Дата дедлайну:</label>
+                    <input type="date" id="date">
+                    <span class="error-msg" id="error-date"></span>
+                </div>
+                <button type="submit" id="submitBtn">Зберегти запис</button>
+            </form>
+        </div>
+
+        <div class="table-section">
+            
+            <div style="margin-bottom: 15px; display: flex; gap: 10px;">
+                <input type="text" id="searchInput" placeholder="Пошук за назвою..." style="flex-grow: 1; padding: 8px;">
+                <select id="priorityFilter" style="padding: 8px;">
+                    <option value="all">Всі пріоритети</option>
+                    <option value="high">Високий (8-10)</option>
+                    <option value="low">Низький (1-7)</option>
+                </select>
+            </div>
+
+            <table id="taskTable">
+                <thead>
+                    <tr>
+                        <th>Назва</th>
+                        <th>Email</th>
+                        <th>Пріоритет</th>
+                        <th>Дата</th>
+                        <th>Дії</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                    </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

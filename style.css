@@ -1,0 +1,50 @@
+* {
+    box-sizing: border-box; 
+    font-family: Arial, sans-serif;
+}
+.container {
+    display: flex; 
+    gap: 20px;
+    padding: 20px;
+}
+.form-section {
+    width: 30%; 
+    background: #f4f4f4;
+    padding: 15px;
+    border-radius: 5px;
+}
+.table-section {
+    width: 70%; 
+}
+.form-group {
+    margin-bottom: 15px;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+.form-group input {
+    width: 100%;
+    padding: 8px;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+.error-msg {
+    color: red;
+    margin-bottom: 10px;
+}
+.input-error {
+    border: 2px solid red !important;
+}
+.error-msg {
+    color: red;
+    font-size: 12px;
+    display: block;
+}
